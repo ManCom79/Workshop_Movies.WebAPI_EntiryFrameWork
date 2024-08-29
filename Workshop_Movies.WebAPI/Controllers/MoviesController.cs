@@ -64,7 +64,7 @@ namespace Workshop_Movies.WebAPI.Controllers
         }
 
         [HttpGet("queryById")]
-        public ActionResult<MovieDto> GetMovieByIdFromQuery(int id)
+        public ActionResult<MovieDto> GetMovieByIdFromQuery([FromQuery] int id)
         {
             var movie = _movieService.GetMovieById(id);
             if (movie.Title != null)
@@ -112,8 +112,8 @@ namespace Workshop_Movies.WebAPI.Controllers
             return Ok(_movieService.DeleteMovie(idOfMovieToDelete));
         }
 
-        [HttpDelete("deleteById/{id:int}")]
-        public IActionResult DeleteById(int id)
+        [HttpDelete("deleteById")]
+        public ActionResult DeleteMovieById([FromQuery] int id)
         {
             return Ok(_movieService.DeleteMovie(id));
         }
