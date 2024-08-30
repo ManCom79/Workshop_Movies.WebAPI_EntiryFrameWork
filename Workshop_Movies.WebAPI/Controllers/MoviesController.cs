@@ -106,7 +106,7 @@ namespace Workshop_Movies.WebAPI.Controllers
         }
 
         [HttpDelete("DeleteFromBody")]
-        public IActionResult DeleteFromBody(MovieWithIdDto movie)
+        public IActionResult DeleteFromBody([FromBody] MovieWithIdDto movie)
         {
             var idOfMovieToDelete = movie.Id;
             return Ok(_movieService.DeleteMovie(idOfMovieToDelete));
