@@ -14,7 +14,7 @@ namespace Services.Interfaces
         public List<MovieDto> GetAllMovies();
         public MovieWithIdDto GetMovieById(int id);
         public List<MovieDto> GetMovieByGenreOrYear(string? genre, int? year);
-        public string UpdateMovie(int id, MovieWithIdDto movie);
+        public string UpdateMovie(MovieWithIdDto movie);
         public string DeleteMovie(int id);
     }
 }

@@ -92,17 +92,17 @@ namespace Workshop_Movies.WebAPI.Controllers
             }
         }
 
-        [HttpPut("{UpdateTitle}")]
-        public ActionResult<MovieDto> UpdateMovie(int id, [FromBody] MovieWithIdDto movie)
+        [HttpPut("UpdateMovieWithId")]
+        public ActionResult<MovieDto> UpdateMovie([FromBody] MovieWithIdDto movie)
         {
-            var movieToUpdate = _movieService.GetMovieById(id);
-
-            if (movieToUpdate != null)
+            try
             {
-                _movieService.UpdateMovie(id, movie);
-                return Ok();
+                return Ok(_movieService.UpdateMovie(movie));
+
+            } catch
+            {
+                return BadRequest();
             }
-            return BadRequest();
         }
 
         [HttpDelete("DeleteFromBody")]

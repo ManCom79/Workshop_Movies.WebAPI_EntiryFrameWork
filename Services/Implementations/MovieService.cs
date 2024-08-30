@@ -122,11 +122,12 @@ namespace Services.Implementations
             }
         }
 
-        public string UpdateMovie(int id, MovieWithIdDto movie)
+        public string UpdateMovie(MovieWithIdDto movie)
         {
             Genres genre;
 
-            var movieExist = _movieRepository.GetById(id);
+            var idToCheckIfMovieExist = movie.Id;
+            var movieExist = _movieRepository.GetById(idToCheckIfMovieExist);
 
             if (movieExist != null)
             {
@@ -150,7 +151,7 @@ namespace Services.Implementations
                 }
             } else
             {
-                return $"Movie with Id: {id} does not exist.";
+                return $"Movie with Id: {movie.Id} does not exist.";
             }
         }
 
