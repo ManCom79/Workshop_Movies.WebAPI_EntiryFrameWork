@@ -18,6 +18,7 @@ namespace Services.Helpers
         public static IServiceCollection RegisterRepository(this IServiceCollection services)
         {
             services.AddTransient<IMovieRepository, MovieRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
             return services;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using DomainModels.Enums;
 using DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
@@ -36,6 +37,7 @@ namespace Workshop_Movies.WebAPI.Controllers
             return Ok(_movieService.CreateMovie(movie));
         }
         [HttpGet]
+        [Authorize]
         public ActionResult<List<MovieDto>> GetAllMovies()
         {
             var movies = _movieService.GetAllMovies();
