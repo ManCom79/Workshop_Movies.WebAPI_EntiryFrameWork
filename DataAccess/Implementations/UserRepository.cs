@@ -23,9 +23,9 @@ namespace DataAccess.Implementations
             return _dbContext.SaveChanges();
         }
 
-        public User GetUserByUserName(string username)
+        public User GetUserByUserName(string username, string hashPassword)
         {
-            return _dbContext.Users.SingleOrDefault(x => x.UserName == username);
+            return _dbContext.Users.SingleOrDefault(x => x.UserName == username && x.Password == hashPassword);
         }
     }
 }

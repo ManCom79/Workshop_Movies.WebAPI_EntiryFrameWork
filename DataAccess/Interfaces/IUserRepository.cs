@@ -10,6 +10,6 @@ namespace DataAccess.Interfaces
     public interface IUserRepository
     {
         public int Add(User user);
-        public User GetUserByUserName(string username);
+        public User GetUserByUserName(string username, string hashPassword);
     }
 }

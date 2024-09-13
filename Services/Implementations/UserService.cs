@@ -29,8 +29,8 @@ namespace Services.Implementations
             {
                 throw new Exception("Username and password must be provided!");
             }
-
-            if(_userRepository.GetUserByUserName(userDto.UserName) != null)
+            //remove password
+            if(_userRepository.GetUserByUserName(userDto.UserName, userDto.Password) != null)
             {
                 throw new Exception($"User with username {userDto.UserName} already exist.");
             }
@@ -66,7 +66,7 @@ namespace Services.Implementations
             byte[] hashBytes = md5CryptoServiceProvider.ComputeHash(passwordBytes);
             string hashPassword = Encoding.ASCII.GetString(hashBytes);
 
-            var userToLogIn = _userRepository.GetUserByUserName(username);
+            var userToLogIn = _userRepository.GetUserByUserName(username, hashPassword);
 
             if (userToLogIn == null) 
             {

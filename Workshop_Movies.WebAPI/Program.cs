@@ -93,6 +93,7 @@ namespace Workshop_Movies.WebAPI
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+            app.UseAuthorization();
 
 
             app.MapControllers();
