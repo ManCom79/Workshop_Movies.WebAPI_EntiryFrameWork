@@ -1,4 +1,5 @@
 ﻿using DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.Implementations;
@@ -15,7 +16,7 @@ namespace Workshop_Movies.WebAPI.Controllers
         {
             _userService = userService;
         }
-
+        [AllowAnonymous]
         [HttpPost("RegisterUser")]
         public IActionResult RegisterUser([FromBody] UserDto userDto)
         {
@@ -32,7 +33,7 @@ namespace Workshop_Movies.WebAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-
+        [AllowAnonymous]
         [HttpPost("UserLogIn")]
         public IActionResult UserLogIn([FromBody] UserDto userDto)
         {
