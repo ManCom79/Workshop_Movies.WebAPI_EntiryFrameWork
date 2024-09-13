@@ -35,11 +35,11 @@ namespace Workshop_Movies.WebAPI.Controllers
         }
         [AllowAnonymous]
         [HttpPost("UserLogIn")]
-        public IActionResult UserLogIn([FromBody] UserDto userDto)
+        public IActionResult UserLogIn([FromBody] UsernamePassDto userNamePassDto)
         {
             try
             {
-                LoggedUserDTO user = _userService.LogIn(userDto.UserName, userDto.Password);
+                LoggedUserDTO user = _userService.LogIn(userNamePassDto.UserName, userNamePassDto.Password);
                 return Ok(user);
             } catch (Exception ex)
             {

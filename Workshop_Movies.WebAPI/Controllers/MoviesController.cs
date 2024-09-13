@@ -10,6 +10,7 @@ namespace Workshop_Movies.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class MoviesController : ControllerBase
     {
         public readonly IMovieService _movieService;
@@ -37,7 +38,6 @@ namespace Workshop_Movies.WebAPI.Controllers
             return Ok(_movieService.CreateMovie(movie));
         }
         [HttpGet]
-        [Authorize]
         public ActionResult<List<MovieDto>> GetAllMovies()
         {
             var movies = _movieService.GetAllMovies();
